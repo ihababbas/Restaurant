@@ -47,21 +47,17 @@ let tbody = document.createElement('tbody');
 table.appendChild(thead);
 table.appendChild(tbody);
 
+const heads = ["Food ID","Food Name", "Type","Price"];
 let row_1 = document.createElement('tr');
-let heading_1 = document.createElement('th');
-heading_1.textContent = "Food ID";
-let heading_2 = document.createElement('th');
-heading_2.textContent = "Food Name";
-let heading_3 = document.createElement('th');
-heading_3.textContent = "Type";
-let heading_4 = document.createElement('th');
-heading_4.textContent = "Price";
-
-row_1.appendChild(heading_1);
-row_1.appendChild(heading_2);
-row_1.appendChild(heading_3);
-row_1.appendChild(heading_4);
+for (let i= 0; i < heads.length ; i++)
+{
+    let heading_1 = document.createElement('th');
+        heading_1.textContent = "Food ID";
+        row_1.appendChild(heading_1);
+};
 thead.appendChild(row_1);
+
+
 
 Menu.prototype.printMenu = function (newType) {
         let row_1 = document.createElement('tr');
