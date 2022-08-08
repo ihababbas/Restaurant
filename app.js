@@ -12,8 +12,7 @@ function Menu(FoodID ,FoodName, Type, Price ) {
     this.FoodID = FoodID;
     this.Name = FoodName;
     this.Type= Type;
-    this.Price = Price;
-    
+    this.Price = Price;    
     this.add = function (ID)
     {
       this.FoodID =ID;  
@@ -33,8 +32,7 @@ function handleSubmit(event) {
     let price = event.target.price.value;
     console.log(name, price, Type);
     newID = add();
-    const newType =  new Menu(newID,name,Type,price)
-    
+    const newType =  new Menu(newID,name,Type,price)    
     console.log(allfood);
     newType.printMenu(newType);    
 };
@@ -49,28 +47,24 @@ let tbody = document.createElement('tbody');
 table.appendChild(thead);
 table.appendChild(tbody);
 
+const heads = ["Food ID","Food Name", "Type","Price"];
 let row_1 = document.createElement('tr');
-let heading_1 = document.createElement('th');
-heading_1.innerHTML = "Food ID";
-let heading_2 = document.createElement('th');
-heading_2.innerHTML = "Food Name";
-let heading_3 = document.createElement('th');
-heading_3.innerHTML = "Type";
-let heading_4 = document.createElement('th');
-heading_4.innerHTML = "Price";
-
-row_1.appendChild(heading_1);
-row_1.appendChild(heading_2);
-row_1.appendChild(heading_3);
-row_1.appendChild(heading_4);
+for (let i= 0; i < heads.length ; i++)
+{
+    let heading_1 = document.createElement('th');
+        heading_1.textContent = "Food ID";
+        row_1.appendChild(heading_1);
+};
 thead.appendChild(row_1);
+
+
 
 Menu.prototype.printMenu = function (newType) {
         let row_1 = document.createElement('tr');
         for (const property in newType) {            
         let heading_1 = document.createElement('th');
        row_1.appendChild(heading_1);     
-        heading_1.innerHTML = newType[property];
+        heading_1.textContent = newType[property];
             if (property == "Price")
             break;
         }
