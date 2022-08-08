@@ -52,7 +52,7 @@ let row_1 = document.createElement('tr');
 for (let i= 0; i < heads.length ; i++)
 {
     let heading_1 = document.createElement('th');
-        heading_1.textContent = "Food ID";
+        heading_1.textContent = heads[i];
         row_1.appendChild(heading_1);
 };
 thead.appendChild(row_1);
