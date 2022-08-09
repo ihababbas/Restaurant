@@ -71,3 +71,7 @@ Menu.prototype.printMenu = function (newType) {
         thead.appendChild(row_1);
     };
 
+
+//    let liEl = document.createElement('li');
+  //  ulEl.appendChild(liEl);
+   // liEl.textContent = this.ingredients[i];
