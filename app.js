@@ -3,6 +3,7 @@ const body = document.getElementsByTagName('body');
 var ID = 1000;
 var allfood = [];
 var newID = 0;
+var list = [];
 function add() {
     ID = ID + 1;
     return ID ;  
@@ -34,44 +35,21 @@ function handleSubmit(event) {
     newID = add();
     const newType =  new Menu(newID,name,Type,price)    
     console.log(allfood);
-    newType.printMenu(newType);    
+    saveData(allfood);   
 };
 
+function saveData(data) {
+    let stringObj = JSON.stringify(data);
+    localStorage.setItem("MenuList", stringObj);
+  }
 
-const table = document.createElement('table');
-body[0].childNodes[3].appendChild(table);
-
-let thead = document.createElement('thead');
-let tbody = document.createElement('tbody');
-
-table.appendChild(thead);
-table.appendChild(tbody);
-
-const heads = ["Food ID","Food Name", "Type","Price"];
-let row_1 = document.createElement('tr');
-for (let i= 0; i < heads.length ; i++)
-{
-    let heading_1 = document.createElement('th');
-        heading_1.textContent = heads[i];
-        row_1.appendChild(heading_1);
+  function getData() {
+    let retrievedData = localStorage.getItem("MenuList");
+    let arrayData = JSON.parse(retrievedData);
+    console.log(arrayData);
+    return arrayData;
 };
-thead.appendChild(row_1);
 
+list = getData();
 
-
-Menu.prototype.printMenu = function (newType) {
-        let row_1 = document.createElement('tr');
-        for (const property in newType) {            
-        let heading_1 = document.createElement('th');
-       row_1.appendChild(heading_1);     
-        heading_1.textContent = newType[property];
-            if (property == "Price")
-            break;
-        }
-        thead.appendChild(row_1);
-    };
-
-
-//    let liEl = document.createElement('li');
-  //  ulEl.appendChild(liEl);
-   // liEl.textContent = this.ingredients[i];
+sessionStorage.setItem("jsArray", JSON.stringify(list));
